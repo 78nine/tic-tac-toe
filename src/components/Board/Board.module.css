@@ -1,0 +1,8 @@
+.width {
+    width: 220px;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
