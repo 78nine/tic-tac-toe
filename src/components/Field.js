@@ -1,11 +1,12 @@
 import styles from './Field.module.css';
-import globalStyles from '../styles/global.css'
+import globalStyles from '../styles/global.module.css'
+import typographyStyles from '../styles/typography.module.css';
 
 function Field(props) {
   console.log(styles);
     return (
-      <div className={styles.container}>
-          <strong className={globalStyles.textAccent}>{props.value}</strong>
+      <div className={`${styles.container} ${styles.box}`}>
+          <strong className={`${globalStyles.textAccent} ${typographyStyles["fs-500"]}`}>{props.value}</strong>
       </div>
     );
   }
