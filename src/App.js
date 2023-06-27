@@ -1,8 +1,11 @@
+import Field from "./components/Field";
 
 function App() {
   return (
     <div className="App">
-        <h1>Tic tac toe</h1>
+        <Field value="o"/> 
+        <Field value="x"/> 
+        <Field value="x"/>
     </div>
   );
 }

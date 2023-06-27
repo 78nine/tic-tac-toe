@@ -1,0 +1,19 @@
+
+.container {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 70px;
+}
+
+.box {
+    border: 3px solid hsl(var(--clr-light));
+    padding: 20px;
+    line-height: 1;
+}
+
+.fieldElementCenter {
+  
+
+}
