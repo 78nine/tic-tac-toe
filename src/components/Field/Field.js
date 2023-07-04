@@ -3,11 +3,9 @@ import styles from './Field.module.scss';
 // import typographyStyles from '../../styles/typography.module.css';
 
 function Field(props) {
-  console.log(styles);
-  console.log('field props', props);
     return (
       <div className={`${styles.container} ${styles.box} ${styles.flex}`}>
-          <strong className={`${styles.textAccent} ${styles.fs-800}`}>{props.value}</strong>
+          <strong className={`${styles.textAccent} fs-600`}>{props.value}</strong>
       </div>
     );
   }
