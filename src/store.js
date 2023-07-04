@@ -6,8 +6,6 @@ const reducer = (state, action) => {
 const size = 3; 
 const  values = Array(size**2).fill(null);
 
-
-
 const initialState = {
     nextMove: "x",
     values,
