@@ -3,9 +3,14 @@ const reducer = (state, action) => {
   return state;
 };
 
+const size = 3; 
+const  values = Array(size**2).fill(null);
+
+
+
 const initialState = {
     nextMove: "x",
-    values: ["x","x",null,"o","o","o",null,"o","o"]
+    values,
 };
 
 const store = createStore(
