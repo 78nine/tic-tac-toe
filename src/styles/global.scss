@@ -1,4 +1,4 @@
-@import './settings.css';
+@import './settings.scss';
 
 /* ------------------- */
 /* Utility classes     */
@@ -8,9 +8,12 @@
 
 .flex {
     display: flex;
-    gap: var(--gap, 1rem);
+    /* gap: var(--gap, 1rem); */
 }
 
+.wrap {
+    flex-wrap: wrap;
+}
 .grid {
     display: grid;
     gap: var(--gap, 1rem);

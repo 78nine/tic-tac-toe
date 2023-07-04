@@ -1,11 +1,9 @@
-import Field from "./components/Field";
+import Board from "./components/Board/Board";
 
 function App() {
   return (
     <div className="App">
-        <Field value="o"/> 
-        <Field value="x"/> 
-        <Field value="x"/>
+        <Board values={["x","x",null,"x","o","o",null,"o","x"]}/>
     </div>
   );
 }
