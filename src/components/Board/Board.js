@@ -5,7 +5,7 @@ import Field from '../Field/Field';
 function Board(props) {
     console.log(props);
     return (
-      <div className={`${styles.flex} ${styles.wrap} ${styles.width}`}>
+      <div className={`${styles.flex} ${styles.wrap} ${styles.width}`} style={{"--board-size": props.size}}>
         {
             props.values.map((value) => (
                 <Field className={`${styles.flex}`} value={value} />
