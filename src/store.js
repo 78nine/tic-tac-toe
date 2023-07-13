@@ -2,7 +2,10 @@ import { createStore } from 'redux';
 const reducer = (state, action) => {
   switch(action.type) {
     case 'SET_FIELD_VALUE':
-      return {}; // 1. użyje poprzednią wartość stanu i ją zdestrukturyzuje; 2. Ustawi nowy values (w tym samym obiekcie, najepierw dstrukturyzacja) - 
+      console.log('my action payload:', action.payload);
+      return {...state.values, 
+              values: state.values.map((value, index) => index === action.payload.index ? action.payload : action.value)
+            }; // 1. użyje poprzednią wartość stanu i ją zdestrukturyzuje; 2. Ustawi nowy values (w tym samym obiekcie, najepierw dstrukturyzacja) - 
     default: 
       return state;
   }
