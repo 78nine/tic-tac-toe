@@ -7,8 +7,8 @@ function Board(props) {
     return (
       <div className={`${styles.flex} ${styles.wrap} ${styles.width}`} style={{"--board-size": props.size}}>
         {
-            props.values.map((value) => (
-                <Field className={`${styles.flex}`} value={value} />
+            props.values.map((value, index) => (
+                <Field key={index} className={`${styles.flex}`} value={value} />
             ))   
         }
       </div>
