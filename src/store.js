@@ -1,9 +1,24 @@
 import { createStore } from 'redux';
 const reducer = (state, action) => {
-  return state;
+  switch(action.type) {
+    case 'SET_FIELD_VALUE':
+      const newValues = state.values.map((value, index) => index === action.payload.index && value === null ? action.payload.value : value);
+      let somethingChanged = state.values.join("") != newValues.join("");
+      let newNextMove = state.nextMove;
+      if(somethingChanged) {
+        newNextMove = action.payload.value === "o" ? "x": "o"
+      }
+      return {
+        ...state, 
+        values: newValues,
+        nextMove: newNextMove
+      }; 
+    default: 
+      return state;
+  }
 };
 
-const size = 5; // wykorzystać zmienną size i zrobić tak żeby podmieniła wartość domyślną w CSS
+const size = 5; 
 const  values = Array(size**2).fill(null);
 
 const initialState = {
