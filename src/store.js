@@ -20,6 +20,8 @@ const reducer = (state, action) => {
 
 const size = 5; 
 const  values = Array(size**2).fill(null);
+//Actions
+export const setFieldValue = payload => ({type: "SET_FIELD_VALUE", payload});
 
 const initialState = {
     nextMove: "x",
