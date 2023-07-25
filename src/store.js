@@ -13,6 +13,12 @@ const reducer = (state, action) => {
         values: newValues,
         nextMove: newNextMove
       }; 
+    case 'RESET': 
+      return {
+        ...state,
+        winner: null,
+        values: values,
+      }
     default: 
       return state;
   }
@@ -22,11 +28,13 @@ const size = 5;
 const  values = Array(size**2).fill(null);
 //Actions
 export const setFieldValue = payload => ({type: "SET_FIELD_VALUE", payload});
+export const reset = () => ({type: "RESET"});
 
 const initialState = {
     nextMove: "x",
     values,
     size,
+    winner: null, 
 };
 
 const store = createStore(

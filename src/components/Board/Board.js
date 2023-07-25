@@ -1,5 +1,6 @@
 import styles from './Board.module.scss';
 import Field from '../Field/Field';
+import Modal from '../Modal/Modal';
 //import globalStyles from '../../styles/global.module.css';
 
 function Board(props) {
