@@ -1,4 +1,7 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+
+
 const reducer = (state, action) => {
   switch(action.type) {
     case 'SET_FIELD_VALUE':
@@ -19,16 +22,28 @@ const reducer = (state, action) => {
         winner: null,
         values: values,
       }
+    case 'CHECK_WINNER': 
+      return {
+        ...state,
+      }
     default: 
       return state;
   }
 };
+
+export const onFieldClick = payload => {
+  return (dispatch) => {
+    dispatch(setFieldValue(payload)); 
+    dispatch(checkWinner());
+  }
+}
 
 const size = 5; 
 const  values = Array(size**2).fill(null);
 //Actions
 export const setFieldValue = payload => ({type: "SET_FIELD_VALUE", payload});
 export const reset = () => ({type: "RESET"});
+export const checkWinner = () => ({type: "CHECK_WINNER"});
 
 const initialState = {
     nextMove: "x",
@@ -37,10 +52,12 @@ const initialState = {
     winner: null, 
 };
 
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   reducer,
   initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancer(applyMiddleware(thunk)),
 );
 
 export default store;
