@@ -32,7 +32,6 @@ const reducer = (state, action) => {
         winner: null,
         values: values,
       }
-
     case 'CHECK_WINNER': 
       let isWin = false;
       let winner = null;
@@ -57,13 +56,7 @@ const reducer = (state, action) => {
   }
 };
 
-
 const size = 3; 
-const  values = Array(size**2).fill(null);
-//Actions
-export const setFieldValue = payload => ({type: "SET_FIELD_VALUE", payload});
-export const reset = () => ({type: "RESET"});
-export const checkWinner = () => ({type: "CHECK_WINNER"});
 
 export const onFieldClick = payload => {
   return (dispatch) => {
@@ -71,6 +64,12 @@ export const onFieldClick = payload => {
     dispatch(checkWinner());
   }
 }
+
+const  values = Array(size**2).fill(null);
+//Actions
+export const setFieldValue = payload => ({type: "SET_FIELD_VALUE", payload});
+export const reset = () => ({type: "RESET"});
+export const checkWinner = () => ({type: "CHECK_WINNER"});
 
 const initialState = {
     nextMove: "x",
