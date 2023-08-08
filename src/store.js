@@ -1,6 +1,16 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 
+const combinations = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [2,4,6]
+];
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -23,13 +33,30 @@ const reducer = (state, action) => {
         values: values,
       }
     case 'CHECK_WINNER': 
+      let isWin = false;
+      let winner = null;
+      combinations.forEach((combination) => {
+        isWin = combination.every((element, index, array) => {
+          return state.values[element] !== null && state.values[element] === state.values[array[0]];
+        })
+        if(isWin) {
+          winner = state.values[combination[0]];
+        }
+      })
+      if(!winner && state.values.every((element) => element)) {
+        winner = "draw";
+      }
+      console.log(winner);
       return {
         ...state,
+        winner: winner,
       }
     default: 
       return state;
   }
 };
+
+const size = 3; 
 
 export const onFieldClick = payload => {
   return (dispatch) => {
@@ -38,7 +65,6 @@ export const onFieldClick = payload => {
   }
 }
 
-const size = 5; 
 const  values = Array(size**2).fill(null);
 //Actions
 export const setFieldValue = payload => ({type: "SET_FIELD_VALUE", payload});
