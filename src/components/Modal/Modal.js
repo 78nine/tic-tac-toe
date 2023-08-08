@@ -6,10 +6,15 @@ function Modal(props) {
     const theWinner = useSelector(state => state.winner);
     const dispatch = useDispatch();
     const resetFunc = () => dispatch(reset());
-
     return (
       <div className="center">
-          {theWinner && <><strong>The Winner is: {theWinner}</strong><br/></>}
+        {theWinner && <>
+            <strong>
+                {theWinner !== "draw" && `The Winner is: ${theWinner}`}
+                {theWinner === "draw" && `It's a ${theWinner}`}
+            </strong>
+            <br/>
+        </>}
           {theWinner && <button onClick={resetFunc}>Play Again</button>}
       </div>
     );
