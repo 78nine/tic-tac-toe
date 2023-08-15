@@ -28,6 +28,7 @@ const reducer = (state, action) => {
     case 'CHECK_WINNER': 
       let isWin = false;
       let winner = null;
+
       combinations.forEach((combination) => {
         isWin = combination.every((element, index, array) => {
           return state.values[element] !== null && state.values[element] === state.values[array[0]];
@@ -100,6 +101,8 @@ const initialState = {
     nextMove: "x",
     values,
     size,
+    xWins: 0,
+    oWins: 0,
     winner: null, 
 };
 
