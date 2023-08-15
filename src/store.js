@@ -1,17 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 
-const combinations = [
-  [0,1,2],
-  [3,4,5],
-  [6,7,8],
-  [0,3,6],
-  [1,4,7],
-  [2,5,8],
-  [0,4,8],
-  [2,4,6]
-];
-
 const reducer = (state, action) => {
   switch(action.type) {
     case 'SET_FIELD_VALUE':
@@ -57,6 +46,39 @@ const reducer = (state, action) => {
 };
 
 const size = 3; 
+
+const combinations = [];
+
+// rows 
+for (let i = 0; i < size; i++) {
+  let row = [];
+  for (let j = 0; j < size; j++) {
+    row.push(j+(i*size))
+  }
+  combinations.push(row);
+}
+
+// columns
+for (let i = 0; i < size; i++) {
+  let column = [];
+  for (let j = 0; j < size; j++) {
+    column.push(j*size+i)
+  }
+  combinations.push(column);
+}
+
+// diagonals 
+for (let i = 0; i < 2; i++) {
+  let diagonal = [];
+  for (let j = 0; j < size; j++) {
+    if(i == 0) {
+      diagonal.push(j*size+j)
+    } else if (i == 1) {
+      diagonal.push((size - 1) * (j + 1) )
+    }
+  }
+  combinations.push(diagonal);
+}
 
 export const onFieldClick = payload => {
   return (dispatch) => {
