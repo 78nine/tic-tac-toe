@@ -4,17 +4,21 @@ import thunk from 'redux-thunk'
 const reducer = (state, action) => {
   switch(action.type) {
     case 'SET_FIELD_VALUE':
-      const newValues = state.values.map((value, index) => index === action.payload.index && value === null ? action.payload.value : value);
-      let somethingChanged = state.values.join("") != newValues.join("");
-      let newNextMove = state.nextMove;
-      if(somethingChanged) {
-        newNextMove = action.payload.value === "o" ? "x": "o"
+      if(state.winner == null) {
+        const newValues = state.values.map((value, index) => index === action.payload.index && value === null ? action.payload.value : value);
+        let somethingChanged = state.values.join("") != newValues.join("");
+        let newNextMove = state.nextMove;
+        if(somethingChanged) {
+          newNextMove = action.payload.value === "o" ? "x": "o"
+        }
+        return {
+          ...state, 
+          values: newValues,
+          nextMove: newNextMove
+        }; 
+      } else {
+        return state;
       }
-      return {
-        ...state, 
-        values: newValues,
-        nextMove: newNextMove
-      }; 
     case 'RESET': 
       return {
         ...state,
@@ -35,7 +39,6 @@ const reducer = (state, action) => {
       if(!winner && state.values.every((element) => element)) {
         winner = "draw";
       }
-      console.log(winner);
       return {
         ...state,
         winner: winner,
