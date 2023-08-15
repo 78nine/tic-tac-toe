@@ -28,13 +28,20 @@ const reducer = (state, action) => {
     case 'CHECK_WINNER': 
       let isWin = false;
       let winner = null;
-
+      let xWins = state.xWins;
+      let oWins = state.oWins;
       combinations.forEach((combination) => {
         isWin = combination.every((element, index, array) => {
           return state.values[element] !== null && state.values[element] === state.values[array[0]];
         })
         if(isWin) {
           winner = state.values[combination[0]];
+
+          if(winner == 'x') {
+             xWins++;
+          } else {
+            oWins++;
+          }
         }
       })
       if(!winner && state.values.every((element) => element)) {
@@ -42,7 +49,9 @@ const reducer = (state, action) => {
       }
       return {
         ...state,
-        winner: winner,
+        xWins: xWins,
+        oWins: oWins,
+        winner: winner
       }
     default: 
       return state;
