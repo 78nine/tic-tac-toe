@@ -4,17 +4,21 @@ import thunk from 'redux-thunk'
 const reducer = (state, action) => {
   switch(action.type) {
     case 'SET_FIELD_VALUE':
-      const newValues = state.values.map((value, index) => index === action.payload.index && value === null ? action.payload.value : value);
-      let somethingChanged = state.values.join("") != newValues.join("");
-      let newNextMove = state.nextMove;
-      if(somethingChanged) {
-        newNextMove = action.payload.value === "o" ? "x": "o"
+      if(state.winner == null) {
+        const newValues = state.values.map((value, index) => index === action.payload.index && value === null ? action.payload.value : value);
+        let somethingChanged = state.values.join("") != newValues.join("");
+        let newNextMove = state.nextMove;
+        if(somethingChanged) {
+          newNextMove = action.payload.value === "o" ? "x": "o"
+        }
+        return {
+          ...state, 
+          values: newValues,
+          nextMove: newNextMove
+        }; 
+      } else {
+        return state;
       }
-      return {
-        ...state, 
-        values: newValues,
-        nextMove: newNextMove
-      }; 
     case 'RESET': 
       return {
         ...state,
@@ -24,21 +28,30 @@ const reducer = (state, action) => {
     case 'CHECK_WINNER': 
       let isWin = false;
       let winner = null;
+      let xWins = state.xWins;
+      let oWins = state.oWins;
       combinations.forEach((combination) => {
         isWin = combination.every((element, index, array) => {
           return state.values[element] !== null && state.values[element] === state.values[array[0]];
         })
         if(isWin) {
           winner = state.values[combination[0]];
+
+          if(winner == 'x') {
+             xWins++;
+          } else {
+            oWins++;
+          }
         }
       })
       if(!winner && state.values.every((element) => element)) {
         winner = "draw";
       }
-      console.log(winner);
       return {
         ...state,
-        winner: winner,
+        xWins: xWins,
+        oWins: oWins,
+        winner: winner
       }
     default: 
       return state;
@@ -97,6 +110,8 @@ const initialState = {
     nextMove: "x",
     values,
     size,
+    xWins: 0,
+    oWins: 0,
     winner: null, 
 };
 
