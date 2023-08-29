@@ -9,7 +9,7 @@ function Field(props) {
     const dispatch = useDispatch();
     const changeValue = () => dispatch(onFieldClick({value: whatIsNextMove, index: props.index}));
     return (
-      <div className={`${styles.container} ${styles.box} ${styles.flex}`} onClick={changeValue}>
+      <div className={`${styles.container} ${styles.box} ${styles.flex} ${props.selected && styles.winningGreen}`} onClick={changeValue}>
           <strong className={`${styles.textAccent} fs-600`}>{props.value}</strong>
       </div>
     );

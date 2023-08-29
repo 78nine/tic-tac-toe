@@ -24,19 +24,21 @@ const reducer = (state, action) => {
         ...state,
         winner: null,
         values: values,
+        winningCombination: null
       }
     case 'CHECK_WINNER': 
       let isWin = false;
       let winner = null;
       let xWins = state.xWins;
       let oWins = state.oWins;
+      let winningCombination = null;
       combinations.forEach((combination) => {
         isWin = combination.every((element, index, array) => {
           return state.values[element] !== null && state.values[element] === state.values[array[0]];
         })
         if(isWin) {
           winner = state.values[combination[0]];
-
+          winningCombination = combination;
           if(winner == 'x') {
              xWins++;
           } else {
@@ -51,7 +53,8 @@ const reducer = (state, action) => {
         ...state,
         xWins: xWins,
         oWins: oWins,
-        winner: winner
+        winner: winner,
+        winningCombination, 
       }
     default: 
       return state;
@@ -113,6 +116,7 @@ const initialState = {
     xWins: 0,
     oWins: 0,
     winner: null, 
+    winningCombination: null
 };
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
