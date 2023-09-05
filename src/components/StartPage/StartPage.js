@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 // import typographyStyles from '../../styles/typography.module.css';
 
 function StartPage(props) {
-    const [boardSize, setBoardSize] = useState('');
+    const [boardSize, setBoardSize] = useState(3);
     const [whoStarts, setWhoStarts] = useState('x');
   
     const handleInput1Change = (e) => {
@@ -20,12 +20,8 @@ function StartPage(props) {
             <div>
                 <h1>Starting Page</h1>
                 <div>
-                    <label>Input 1:</label>
-                    <input
-                        type="text"
-                        //value={input1}
-                        //onChange={handleInput1Change}
-                    />
+                    <label>Choose board size:</label>
+                    <SingleChoice action={setBoardSize} options={[3,4,5,6]}  value={boardSize}/>    
                 </div>
                 <div>
                     <label>Who starts?</label>
