@@ -19,13 +19,8 @@ const reducer = (state, action) => {
       } else {
         return state;
       }
-    // case 'RESET':
-    //   return {
-    //     ...state,
-    //     winner: null,
-    //     values: values,
-    //     winningCombination: null
-    //   }
+    case 'START_AGAIN':
+      return {...initialState};
     case 'CHECK_WINNER':
       let isWin = false;
       let winner = null;
@@ -134,6 +129,7 @@ export const reset = () => {
 //Actions
 export const setFieldValue = payload => ({ type: "SET_FIELD_VALUE", payload });
 export const checkWinner = () => ({ type: "CHECK_WINNER" });
+export const startAgain = () => ({ type: "START_AGAIN" });
 export const playsFirst = payload => ({ type: "WHO_PLAYS_FIRST", payload });
 export const boardSize = payload => ({ type: "SET_BOARD_SIZE", payload });
 export const values = payload => ({ type: "VALUES", payload });

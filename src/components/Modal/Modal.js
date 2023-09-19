@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Modal.module.scss';
 import { reset } from '../../store';
+import Button from '../Button/Button';
 
 function Modal(props) {
     const theWinner = useSelector(state => state.winner);
@@ -15,7 +16,7 @@ function Modal(props) {
             </strong>
             <br/>
         </>}
-          {theWinner && <button onClick={resetFunc}>Play Again</button>}
+          {theWinner && <Button action={resetFunc} text="Play again"></Button>}
       </div>
     );
   }

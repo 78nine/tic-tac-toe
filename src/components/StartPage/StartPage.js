@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { playsFirst, boardSize as boardSizeAction, values } from '../../store';
+import Button from '../Button/Button';
 //import { onFieldClick } from '../../store';
 // import globalStyles from '../../styles/global.module.css'
 // import typographyStyles from '../../styles/typography.module.css';
@@ -36,7 +37,7 @@ function StartPage(props) {
                     <label>Who starts?</label>
                     <SingleChoice action={setWhoStarts} options={["x","o"]}  value={whoStarts}/>
                 </div>
-                <button type="submit" onClick={handleSubmit}>Play game</button>
+                <Button type="submit" action={handleSubmit} text={"Start Game"}></Button>
             </div>
         </>
 
