@@ -2,8 +2,10 @@
     border: 2px solid hsl(var(--clr-light));
     padding: 7px;
     margin: 7px;
+    
 }
 
 .selected {
     border-color: yellow;
+    background-color: red;
 }

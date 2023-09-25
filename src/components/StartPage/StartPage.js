@@ -25,7 +25,7 @@ function StartPage(props) {
     };
 
     return (
-        <>
+        <div class="center">
             <h1>Łelkom</h1>
             <div>
                 <h1>Starting Page</h1>
@@ -39,7 +39,7 @@ function StartPage(props) {
                 </div>
                 <Button type="submit" action={handleSubmit} text={"Start Game"}></Button>
             </div>
-        </>
+        </div>
 
     );
 }

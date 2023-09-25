@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { startAgain } from "../../store";
+import styles from './PlayPage.module.scss';
 
 import Button from "../Button/Button";
 
@@ -22,13 +23,13 @@ function PlayPage() {
     },[size]);
     
     return (
-        <>
+        <div className={`center ${styles.centerElements}`}>
             <Points />
             <Button text="Start Over" action={() => {dispatch(startAgain())}} />
             <Board values={values} size={size} />
             <NextMove />
             <Modal />
-        </>
+        </div>
     );
 }
 
