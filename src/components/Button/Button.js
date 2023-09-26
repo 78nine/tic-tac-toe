@@ -4,7 +4,7 @@
 function Button(props) {
 
     return (
-        <button type={props.type || "button"} onClick={props.action}>{props.text}</button>
+        <button type={props.type || "button"} onClick={props.action}>{props.children}</button>
     );
   }
   

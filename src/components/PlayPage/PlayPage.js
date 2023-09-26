@@ -25,7 +25,7 @@ function PlayPage() {
     return (
         <div className={`center ${styles.centerElements}`}>
             <Points />
-            <Button text="Start Over" action={() => {dispatch(startAgain())}} />
+            <Button action={() => {dispatch(startAgain())}} >Start Over</Button>
             <Board values={values} size={size} />
             <NextMove />
             <Modal />

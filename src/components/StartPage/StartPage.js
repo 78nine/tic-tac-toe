@@ -37,7 +37,7 @@ function StartPage(props) {
                     <label>Who starts?</label>
                     <SingleChoice action={setWhoStarts} options={["x","o"]}  value={whoStarts}/>
                 </div>
-                <Button type="submit" action={handleSubmit} text={"Start Game"}></Button>
+                <Button type="submit" action={handleSubmit}>Start Game</Button>
             </div>
         </div>
 

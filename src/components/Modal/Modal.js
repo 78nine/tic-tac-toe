@@ -16,7 +16,7 @@ function Modal(props) {
             </strong>
             <br/>
         </>}
-          {theWinner && <Button action={resetFunc} text="Play again"></Button>}
+          {theWinner && <Button action={resetFunc}>Play Again</Button>}
       </div>
     );
   }
