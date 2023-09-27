@@ -31,7 +31,7 @@ function StartPage(props) {
                 <h1>Starting Page</h1>
                 <div>
                     <label>Choose board size:</label>
-                    <SingleChoice action={setBoardSize} options={[3,4,5,6]}  value={boardSize}/>    
+                    <SingleChoice action={setBoardSize} options={[3,4,5,6]}  value={boardSize} fa={"fa fa-th"} />    
                 </div>
                 <div>
                     <label>Who starts?</label>
