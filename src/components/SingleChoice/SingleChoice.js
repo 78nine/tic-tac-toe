@@ -9,9 +9,21 @@ import Button from '../Button/Button';
 function SingleChoice(props) {
   
     // otrzyma dwa propsy: 1. action - co ma się stać gdy ktoś coś wybrał // 2. options - tablica tekstów które ma wyświetlić.
+    function icon(opt) {
+        let content;
+        if (opt == 1) {
+            content = <i className="fa fa-linux"></i>
+        } else if(opt == 0) {
+            content =  <i className="fa fa-windows"></i>
+        } else {
+            content = opt;
+        }
+        return content;
+    }
+
     return (
         <div className="flex center flex-center">
-           {props.options.map((option) => <Button className={styles.frame + ' ' + (option == props.value ? styles.selected : '')} action={() => {props.action(option)}}><i className={props.fa}></i>{option}</Button>)} 
+           {props.options.map((option) => <Button className={styles.frame + ' ' + (option == props.value ? styles.selected : '')} action={() => {props.action(option)}}><i className={props.fa}></i>{ icon(option) }</Button>)} 
         </div>
     );
 }

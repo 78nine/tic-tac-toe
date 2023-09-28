@@ -25,7 +25,7 @@ function StartPage(props) {
     };
 
     return (
-        <div class="center">
+        <div className="center">
             <h1>Łelkom</h1>
             <div>
                 <h1>Starting Page</h1>
@@ -35,7 +35,7 @@ function StartPage(props) {
                 </div>
                 <div>
                     <label>Who starts?</label>
-                    <SingleChoice action={setWhoStarts} options={["x","o"]}  value={whoStarts}/>
+                    <SingleChoice action={setWhoStarts} options={[1, 0]}  value={whoStarts} />
                 </div>
                 <Button type="submit" action={handleSubmit}>Start Game</Button>
             </div>
