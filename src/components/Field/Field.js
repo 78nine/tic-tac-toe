@@ -11,9 +11,9 @@ function Field(props) {
 
     function value(val) {
       let content;
-      if (val == "x") {
+      if (val == 1) {
           content = <i className="fa fa-linux"></i>
-      } else if(val == "o") {
+      } else if(val == 0) {
           content =  <i className="fa fa-windows"></i>
       } 
       return content;
