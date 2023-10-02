@@ -9,7 +9,7 @@ const reducer = (state, action) => {
         let somethingChanged = state.values.join("") != newValues.join("");
         let newNextMove = state.nextMove;
         if (somethingChanged) {
-          newNextMove = action.payload.value === 1 ? 1 : 0
+          newNextMove = action.payload.value === 1 ? 0 : 1
         }
         return {
           ...state,
