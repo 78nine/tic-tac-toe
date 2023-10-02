@@ -15,18 +15,19 @@ function Modal(props) {
       } else if(val == 0) {
           content =  <i className="fa fa-windows"></i>
       } 
+      console.log(content);
       return content;
   }
     return (
       <div className="center">
-        {theWinner && <>
+        {(theWinner || theWinner == 0) && <>
             <strong>
-                {theWinner !== "draw" && `The Winner is: ${value(theWinner)}`}
+                {theWinner !== "draw" && (<>The Winner is: {value(theWinner)}</>)} 
                 {theWinner === "draw" && `It's a ${theWinner}`}
             </strong>
             <br/>
         </>}
-          {theWinner && <Button action={resetFunc}>Play Again</Button>}
+          {(theWinner || theWinner == 0) && <Button action={resetFunc}>Play Again</Button>}
       </div>
     );
   }

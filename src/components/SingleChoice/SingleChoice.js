@@ -14,15 +14,11 @@ function SingleChoice(props) {
     
         if (opt == 1) {
             content = <i className="fa fa-linux"></i>
-            console.log(content);
         } else if(opt == 0) {
             content =  <i className="fa fa-windows"></i>
-            console.log(content);
         } else {
             content = opt;
-            console.log(content);
         }
-        console.log(content);
         return content;
     }
 
