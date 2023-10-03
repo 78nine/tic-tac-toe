@@ -7,7 +7,7 @@ function Points(props) {
     return (
       <div className={`center ${styles.pointsPadding}`}>
           <h1>Points: </h1>
-          <p>X: {pointsX} - O: {pointsO}</p>
+          <p><i className="fa fa-windows"></i>: {pointsX} - <i className="fa fa-linux"></i>: {pointsO}</p>
       </div>
     );
   }

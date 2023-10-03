@@ -5,9 +5,18 @@ import { useSelector } from "react-redux";
 
 function NextMove(props) {
     const nextMove = useSelector((state) => state.nextMove);
+    function value(val) {
+      let content;
+      if (val == 1) {
+          content = <i className="fa fa-linux"></i>
+      } else if(val == 0) {
+          content =  <i className="fa fa-windows"></i>
+      } 
+      return content;
+    }
     return (
       <div className={`${styles.whiteText}`}>
-         Next move: {nextMove}
+         Next move: {value(nextMove)}
       </div>
     );
   }

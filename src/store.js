@@ -9,7 +9,7 @@ const reducer = (state, action) => {
         let somethingChanged = state.values.join("") != newValues.join("");
         let newNextMove = state.nextMove;
         if (somethingChanged) {
-          newNextMove = action.payload.value === "o" ? "x" : "o"
+          newNextMove = action.payload.value === 1 ? 0 : 1
         }
         return {
           ...state,
@@ -19,13 +19,8 @@ const reducer = (state, action) => {
       } else {
         return state;
       }
-    // case 'RESET':
-    //   return {
-    //     ...state,
-    //     winner: null,
-    //     values: values,
-    //     winningCombination: null
-    //   }
+    case 'START_AGAIN':
+      return {...initialState};
     case 'CHECK_WINNER':
       let isWin = false;
       let winner = null;
@@ -39,7 +34,7 @@ const reducer = (state, action) => {
         if (isWin) {
           winner = state.values[combination[0]];
           winningCombination = combination;
-          if (winner == 'x') {
+          if (winner == 0) {
             xWins++;
           } else {
             oWins++;
@@ -134,6 +129,7 @@ export const reset = () => {
 //Actions
 export const setFieldValue = payload => ({ type: "SET_FIELD_VALUE", payload });
 export const checkWinner = () => ({ type: "CHECK_WINNER" });
+export const startAgain = () => ({ type: "START_AGAIN" });
 export const playsFirst = payload => ({ type: "WHO_PLAYS_FIRST", payload });
 export const boardSize = payload => ({ type: "SET_BOARD_SIZE", payload });
 export const values = payload => ({ type: "VALUES", payload });
