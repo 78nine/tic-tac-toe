@@ -1,17 +1,19 @@
-import Board from "./components/Board/Board";
 import { useSelector } from "react-redux";
-import NextMove from "./components/NextMove/NextMove";
-import Modal from "./components/Modal/Modal";
-import Points from "./components/Points/Points";
-function App() {
-  const values = useSelector((state) => state.values);
-  const size = useSelector((state) => state.size);
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PlayPage from "./components/PlayPage/PlayPage";
+import StartPage from "./components/StartPage/StartPage";
+
+
+const App = () => {
   return (
     <div className="App">
-        <Points />
-        <Board values={values} size={size} />
-        <NextMove />
-        <Modal />
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<StartPage />} />
+        <Route exact path="/play" element={<PlayPage />} />
+        {/* Add more routes here if needed */}
+      </Routes>
+    </Router>
     </div>
   );
 }
