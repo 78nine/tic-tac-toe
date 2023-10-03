@@ -34,7 +34,7 @@ const reducer = (state, action) => {
         if (isWin) {
           winner = state.values[combination[0]];
           winningCombination = combination;
-          if (winner == 'x') {
+          if (winner == 0) {
             xWins++;
           } else {
             oWins++;

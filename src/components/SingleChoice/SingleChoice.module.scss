@@ -1,11 +1,11 @@
 .frame { 
     border: 2px solid hsl(var(--clr-light));
-    padding: 7px;
-    margin: 7px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 3px;
     
 }
 
 .selected {
-    border-color: yellow;
-    background-color: red;
+    color: rgb(191, 0, 255);
 }
